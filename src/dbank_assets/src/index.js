@@ -2,9 +2,7 @@ import {dbank} from "../../declarations/dbank";
 
 
 window.addEventListener("load", async function(){
-  //console.log('loading');
-  const currentAmount = await dbank.checkBalance();
-  document.getElementById('value').innerHTML = currentAmount.toFixed(2); // Match.round(currentAmount * 100) / 100
+  updateBalance();
 });
 
 document.querySelector("form").addEventListener("submit", async function(event){  
@@ -33,8 +31,7 @@ document.querySelector("form").addEventListener("submit", async function(event){
   await dbank.compound();
   
   // Updating value on screen
-  const currentAmount = await dbank.checkBalance();
-  document.getElementById('value').innerHTML = currentAmount.toFixed(2);
+  updateBalance();
 
   // Re-setting form fields and Enabling submit button
   document.getElementById("input-amount").value = "";
@@ -42,4 +39,9 @@ document.querySelector("form").addEventListener("submit", async function(event){
   submitButton.removeAttribute("disabled");
     
 })
+
+async function updateBalance(){
+  const currentAmount = await dbank.checkBalance();
+  document.getElementById('value').innerHTML = currentAmount.toFixed(2); // Match.round(currentAmount * 100) / 1002);
+};
 
