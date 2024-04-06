@@ -24,6 +24,9 @@ dfx config --help
 ```bash
 sudo date +%Y-%m-%d\ %H:%M:%S -s "2024-03-28 19:58:00"
 ```
+```bash
+sudo hwclock -s
+```
 ### Crontab job: 
 crontab -e
 */10 * * * * /sbin/hwclock -s
